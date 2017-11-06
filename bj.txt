@@ -1,0 +1,32 @@
+右键的显示包括在
+File|Edit|Assets|GameObject|Component|Window|...
+
+ [MenuItem("CONTEXT/PlayerHealth/InitHealthAndSpeed")]//(脚本右键)
+
+  CompleteProject.PlayerHealth ph = cmd.context as CompleteProject.PlayerHealth
+
+  用Undo删除的游戏物体是可以撤销的
+
+  [MenuItem("GameObject/test _t", false, 10)]//快捷键%->Ctrl,#->shift,&->alt
+
+   [ContextMenu("setColor")] 脚本里放置右键属性
+
+   [ContextMenuItem("add hp", "AddHp")] 给属性增加右键方法
+
+   ScriptableWizard  创建对话框（最多两个按钮）   void OnWizardCreate()//监听按钮点击（固定）
+
+    Undo.RecordObject()保存为了记录撤销
+
+    ShowNotification(new GUIContent("info")) 显示提示信息
+
+    EditorPrefs可用来保存信息
+
+    EditorUtility.DisplayProgressBar("进度", "0/3",0);
+        for (int i = 1; i <= 3; i++)
+        {
+            EditorUtility.DisplayProgressBar("进度", i+"/3", i/3);
+        }
+        EditorUtility.ClearProgressBar() 添加进度条显示
+
+MyWindow win = EditorWindow.GetWindow<MyWindow>();
+        win.Show();显示自定义窗口 用OnGUI绘制
